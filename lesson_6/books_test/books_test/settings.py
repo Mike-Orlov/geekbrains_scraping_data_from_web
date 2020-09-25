@@ -9,8 +9,8 @@
 
 BOT_NAME = 'books_test'
 
-SPIDER_MODULES = ['books_test.spiders']
-NEWSPIDER_MODULE = 'books_test.spiders'
+SPIDER_MODULES = ['spiders']
+NEWSPIDER_MODULE = 'spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -66,7 +66,7 @@ CONCURRENT_REQUESTS_PER_IP = 16
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'books_test.pipelines.BooksTestPipeline': 300,
+    'pipelines.BooksTestPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

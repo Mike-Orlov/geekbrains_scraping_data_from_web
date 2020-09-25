@@ -1,6 +1,7 @@
 import scrapy
 from scrapy.http import HtmlResponse
-from books_test.items import BooksTestItem
+#from books_test.items import BooksTestItem
+from items import BooksTestItem
 
 
 class Book24Spider(scrapy.Spider):
@@ -23,7 +24,7 @@ class Book24Spider(scrapy.Spider):
         book_name = response.xpath("//h1/text()").extract_first()
         book_authors = response.xpath('//span[@class="item-tab__chars-key" and text()="Автор:"]/../span[@class="item-tab__chars-value"]/a/text()').extract()
         book_price_main = response.xpath("//div[@class='item-actions__price-old']/text()").extract()
-        book_price_sale = response.xpath("//div[@class='item-actions__price']/text()").extract()
+        book_price_sale = response.xpath("//div[@class='item-actions__price']/b/text()").extract()
         book_rating = response.xpath("//span[@class='rating__rate-value']/text()").extract()
 
         yield BooksTestItem(book_link=book_link, book_name=book_name, book_authors=book_authors, 

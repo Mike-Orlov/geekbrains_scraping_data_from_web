@@ -14,9 +14,18 @@ class BooksTestPipeline:
         self.mongo_base = client.books_test
 
     def process_item(self, item, spider):
-        item['book_price_main'] = int(item['book_price_main'])
-        item['book_price_sale'] = int(item['book_price_sale'])
-        item['book_rating'] = float(item['book_rating'])
+        if item['book_price_main']:
+            item['book_price_main'] = int(item['book_price_main'][0].split(' ')[0])
+        else:
+            item['book_price_main'] = None
+        if item['book_price_sale']:
+            item['book_price_sale'] = int(item['book_price_sale'][0])
+        else:
+            item['book_price_sale'] = None
+        if item['book_rating']:
+            item['book_rating'] = item['book_rating'][0]
+        else:
+            item['book_rating'] = None
 
         collection = self.mongo_base[spider.name] # Коллекция по имени паука для удобства
         collection.insert_one(item)

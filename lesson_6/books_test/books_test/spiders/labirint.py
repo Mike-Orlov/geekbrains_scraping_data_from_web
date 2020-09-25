@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.http import HtmlResponse
-from books_test.items import BooksTestItem
-
+#from books_test.items import BooksTestItem
+from items import BooksTestItem
 
 class LabirintSpider(scrapy.Spider):
     name = 'labirint'
