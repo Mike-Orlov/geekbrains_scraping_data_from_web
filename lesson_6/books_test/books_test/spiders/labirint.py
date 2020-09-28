@@ -1,7 +1,6 @@
 import scrapy
 from scrapy.http import HtmlResponse
-#from books_test.items import BooksTestItem
-from items import BooksTestItem
+from books_test.items import BooksTestItem
 
 class LabirintSpider(scrapy.Spider):
     name = 'labirint'
@@ -21,7 +20,8 @@ class LabirintSpider(scrapy.Spider):
     def book_parse(self, response:HtmlResponse):
         book_link = response.url
         book_name = response.xpath("//h1/text()").extract_first()
-        book_authors = response.xpath("//a[@data-event-label='author']/text()").extract()
+        # Намеренно беру только первого автора
+        book_authors = response.xpath("//a[@data-event-label='author']/text()").extract_first()
         book_price_main = response.xpath("//span[@class='buying-priceold-val-number']/text()").extract()
         book_price_sale = response.xpath("//span[@class='buying-pricenew-val-number']/text()").extract()
         book_rating = response.xpath("//div[@id='rate']/text()").extract_first()

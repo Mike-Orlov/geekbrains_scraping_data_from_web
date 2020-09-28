@@ -5,7 +5,6 @@
 
 import scrapy
 
-
 class BooksTestItem(scrapy.Item):
     # define the fields for your item here like:
     book_link = scrapy.Field()

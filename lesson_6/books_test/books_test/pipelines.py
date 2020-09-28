@@ -7,7 +7,8 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from pymongo import MongoClient
-
+import re
+#re.sub('\D', '', 'aas30dsa20')
 class BooksTestPipeline:
     def __init__(self):
         client = MongoClient('localhost', 27017)
@@ -15,11 +16,11 @@ class BooksTestPipeline:
 
     def process_item(self, item, spider):
         if item['book_price_main']:
-            item['book_price_main'] = int(item['book_price_main'][0].split(' ')[0])
+            item['book_price_main'] = int(re.sub('\D', '', item['book_price_main'][0].split(' ')[0]))
         else:
             item['book_price_main'] = None
         if item['book_price_sale']:
-            item['book_price_sale'] = int(item['book_price_sale'][0])
+            item['book_price_sale'] = int(re.sub('\D', '',item['book_price_sale'][0]))
         else:
             item['book_price_sale'] = None
         if item['book_rating']:
