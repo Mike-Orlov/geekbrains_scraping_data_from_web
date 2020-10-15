@@ -10,8 +10,8 @@ class InstaSpider(scrapy.Spider):
     name = 'insta'
     allowed_domains = ['instagram.com']
     start_urls = ['https://www.instagram.com/']
-    insta_login = 'gbinsta_test'
-    insta_password = '#PWD_INSTAGRAM_BROWSER:10:1601724092:ASJQAKkKm6/EozMnxydq3K1y4UF1GpurGY+l6ANRaAskPNAX2R18wFsXBr8aFJ1AxrMI1opG9pzsSrwjVdDnnaZIZIuK/uFlc3lAQZRoMX4cP9rCwbvJwb8Lor5LJ8E/YJhFjCBtGP5/KGnJ'
+    insta_login = 'my_login' #Put login here
+    insta_password = 'my_password' #Find it in console XHR in POST-query
     login_link = 'https://www.instagram.com/accounts/login/ajax/'
     parse_users = ['mazur__alex', 'kirill_007']   #Пользователь, у которого собираем посты. Можно указать список
 
